@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Station Seismograms</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main id="vizHolder">
+
+		<h1 id="stationID">Station ID</h1>
+
+		<figure id="vizStations"></figure>
+
+		<section class="viz-grams">
+			<h2 class="label-east">vFParallel</h2>
+			<figure id="vizGramEast"></figure>
+
+			<h2 class="label-north">vFNormal</h2>
+			<figure id="vizGramNorth"></figure>
+
+			<h2 class="label-z">vZ</h2>
+			<figure id="vizGramZ"></figure>
+
+			<figure id="vizGramXAxis"></figure>
+		</section>
+
+		<aside class="legend">
+			<span class="line-item line-real"><span class="icon icon-line"></span>Real</span>
+			<span class="line-item line-simulation"><span class="icon icon-line"></span>Simulation</span>
+		</aside>
+
+	</main>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
