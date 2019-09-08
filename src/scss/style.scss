@@ -22,14 +22,14 @@ main {
 	margin: auto;
 	display: grid;
 	grid-template-columns:
-							[grams-start] 65%
-							[grams-end stations-start] 33%
-							[stations-end];
+			[grams-start] 65%
+			[grams-end stations-start] 33%
+			[stations-end];
 	grid-template-rows:
-							[h1-start] auto
-							[h1-end stations-start grams-start legend-start] auto
-							[stations-end] 30px
-							[grams-end];
+			[h1-start] auto
+			[h1-end stations-start grams-start legend-start] auto
+			[stations-end] 30px
+			[grams-end];
 	grid-row-gap: 10px;
 	grid-column-gap: 2%;
 }
@@ -45,27 +45,29 @@ figure {
 	grid-column: grams-start / grams-end;
 	display: grid;
 	grid-template-rows:
-							[gram-east-start] 250px
-							[gram-east-end gram-north-start] 250px
-							[gram-north-end gram-z-start] 250px
-							[gram-z-end gram-x-axis-start] 30px
-							[gram-x-axis-end];
+			[gram-east-start] 250px
+			[gram-east-end gram-north-start] 250px
+			[gram-north-end gram-z-start] 250px
+			[gram-z-end gram-x-axis-start] 30px
+			[gram-x-axis-end];
 	grid-template-columns:
-							[label-start] minmax(auto, 5%)
-							[label-end grams-start] 95%
-							[grams-end];
+			[label-start] minmax(auto, 5%)
+			[label-end grams-start] 95%
+			[grams-end];
+
+	h2 {
+		grid-column: label-start / label-end;
+		font-size: 14px;
+		margin: 0;
+		font-weight: normal;
+		letter-spacing: 0.03em;
+		color: gray;
+		writing-mode: vertical-lr;
+		transform: rotate(180deg);
+		text-align: center;
+	}
 }
-.viz-grams h2 {
-	grid-column: label-start / label-end;
-	font-size: 14px;
-	margin: 0;
-	font-weight: normal;
-	letter-spacing: 0.03em;
-	color: gray;
-	writing-mode: vertical-lr;
-	transform: rotate(180deg);
-	text-align: center;
-}
+
 .label-east {
 	grid-row: gram-east-start / gram-east-end;
 }
@@ -114,25 +116,29 @@ figure {
 	z-index: 0;
 	/* Hack to control tab focus outline size*/
 	height: 0;
+
+	.icon {
+		display: inline-block;
+		position: relative;
+		margin-right: 10px;
+	}
+
+	.icon-line {
+		height: 1px;
+		width: 20px;
+		top: -3px;
+		border-bottom: 2px solid black;
+	}
+
+	.line-item {
+		grid-column: 2 / 3;
+	}
 }
-.legend .icon {
-	display: inline-block;
-	position: relative;
-	margin-right: 10px;
-}
-.legend .icon-line {
-	height: 1px;
-	width: 20px;
-	top: -3px;
-	border-bottom: 2px solid black;
-}
+
 .line-simulation .icon-line {
 	border-color: red;
 }
 
-.legend .line-item {
-	grid-column: 2 / 3;
-}
 
 #vizStations {
 	grid-row: stations-start / stations-end;
@@ -141,32 +147,35 @@ figure {
 	justify-content: center;
 	align-items: center;
 	z-index: 1;
+
+	svg:focus {
+		outline: none;
+	}
+
+	svg {
+		background: white;
+		border: 4px solid lightgray;
+	}
 }
 
-#vizStations svg:focus {
-	outline: none;
-}
 
-#vizStations svg {
-	background: white;
-	border: 4px solid lightgray;
-}
-
-#vizGramXAxis svg {
+#vizGramXAxis {
+	svg {
 		overflow: visible;
-}
+	}
 
-#vizGramXAxis .axis.x .domain {
-	display: none;
+	.axis.x .domain {
+		display: none;
+	}
 }
 
 .station-point {
 	cursor: pointer;
-}
 
-.station-point:hover,
-.station-point.active {
-	fill: limegreen;
+	&:hover,
+	&.active {
+		fill: limegreen;
+	}
 }
 
 .gram-line {
@@ -179,14 +188,17 @@ figure {
 	stroke: red;
 }
 
-.axis .tick text {
-	font-size: 12px;
+.axis .tick {
+	text {
+		font-size: 12px;
+	}
+
+	line {
+		stroke: gray;
+		stroke-width: 0.3;
+	}
 }
 
-.axis .tick line {
-	stroke: gray;
-	stroke-width: 0.3;
-}
 
 path.domain {
 	stroke-width: 0.6;
